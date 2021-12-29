@@ -51,7 +51,7 @@ open class MZCircleProgress: UIView {
     
     private var lineLayer: CAShapeLayer?
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

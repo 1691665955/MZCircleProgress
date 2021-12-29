@@ -7,22 +7,22 @@
 
 import UIKit
 
-class MZCircleProgress: UIView {
+open class MZCircleProgress: UIView {
     
     /// 底条颜色
-    var backLineColor: UIColor = .lightGray
+    public var backLineColor: UIColor = .lightGray
     
     /// 底条宽度
-    var backLineWidth: CGFloat = 6.0
+    public var backLineWidth: CGFloat = 6.0
     
     /// 进度条颜色
-    var progressColor: UIColor = .brown
+    public var progressColor: UIColor = .brown
     
     /// 进度条宽度
-    var progressWidth: CGFloat = 6.0
+    public var progressWidth: CGFloat = 6.0
     
     /// 进度比例（0～1）
-    var ratio: CGFloat = 0 {
+    public var ratio: CGFloat = 0 {
         didSet {
             var newValue = ratio
             if newValue < 0 {
@@ -35,13 +35,13 @@ class MZCircleProgress: UIView {
     }
     
     /// 开始弧度
-    var startAngle: CGFloat = CGFloat(-(Double.pi / 2))
+    public var startAngle: CGFloat = CGFloat(-(Double.pi / 2))
     
     /// 结束弧度
-    var endAngle: CGFloat = CGFloat(Double.pi / 2 * 3)
+    public var endAngle: CGFloat = CGFloat(Double.pi / 2 * 3)
     
     /// 中间文本框
-    lazy private(set) var textLabel: UILabel = {
+    public lazy private(set) var textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.textColor = .brown
         textLabel.textAlignment = .center
@@ -56,7 +56,7 @@ class MZCircleProgress: UIView {
         setup()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
@@ -66,7 +66,7 @@ class MZCircleProgress: UIView {
         addSubview(textLabel)
     }
     
-    override func draw(_ rect: CGRect) {
+    open override func draw(_ rect: CGRect) {
         super.draw(rect)
         
         let radius: CGFloat = ((self.frame.size.width > self.frame.size.height ? self.frame.size.height : self.frame.size.width)-(self.backLineWidth > self.progressWidth ? self.backLineWidth : self.progressWidth))*0.5;
@@ -99,7 +99,7 @@ class MZCircleProgress: UIView {
         self.lineLayer = lineLayer
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         self.textLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width * 0.8, height: self.bounds.size.height * 0.5)
         self.textLabel.center = CGPoint(x: self.bounds.size.width * 0.5, y: self.bounds.size.height * 0.5)
